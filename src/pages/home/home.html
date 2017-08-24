@@ -9,25 +9,25 @@
 
 <ion-content padding>
 
-<ion-grid>
-  <ion-row>
-    <ion-col col-12><h1 *ngIf="header">Today</h1></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-2><p>{{current_weather.city}}</p></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6><p>{{current_weather.conditionDescription}}</p></ion-col>
-    <ion-col col-6><img src="{{current_weather.weatherImage}}" alt=""></ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col col-6><p>{{current_weather.temp}}</p></ion-col>
-    <ion-col col-6>
-        <ion-row>
-            <ion-col col-12><p>{{current_weather.min}}</p></ion-col>
-            <ion-col col-12><p>{{current_weather.max}}</p></ion-col>
-        </ion-row>  
-    </ion-col>
-  </ion-row>
-</ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <h1 *ngIf="header" class="header">Today, {{timestamp|date:'dd MMM yyyy'}}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><img src="{{current_weather.weatherImage}}" alt=""></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12 class="temp">
+        <p text-center>max {{current_weather.max}} &deg; C</p>
+        <p text-center>min {{current_weather.min}} &deg; C</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col class="area">
+          <p text-center>{{current_weather.city}}</p>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
 </ion-content>

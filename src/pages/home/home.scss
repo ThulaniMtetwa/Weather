@@ -1,5 +1,26 @@
 page-home {
-
-   
-
+    .header{
+        font-size: 2.3em;
+    }
+    img{
+        display: block;
+        margin: 0 auto;
+        height: 20vh;
+    }
+    .temp{
+        p:first-child{
+            font-size: 3.3em;
+            line-height: 2px;
+        }
+        p:last-child{
+            font-size: 2.3em;
+            line-height: 2px;
+        }
+    }
+    .area{
+        p{
+            margin: 0 auto;
+            font-size: 1.8em;
+        }
+    }
 }

@@ -22,6 +22,7 @@ export class HomePage {
 	latitude: number;
 	longitude: number;
 	header : boolean = false;
+	timestamp : Date;
 	
 	constructor(
 		public navCtrl: NavController,
@@ -34,6 +35,7 @@ export class HomePage {
 		public loading: LoadingController
 	) {
 		this.current_weather = WeatherModel;
+		this.timestamp = new Date();
 	}
 
 	getUserLocation() {
