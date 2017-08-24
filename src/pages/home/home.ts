@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, AlertController, LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { WeatherServiceProvider } from '../../providers/weather-service/weather-service';
 import { WeatherModel } from '../../classes/weather-model';
@@ -21,7 +21,8 @@ export class HomePage {
 	current_weather: any;
 	latitude: number;
 	longitude: number;
-
+	header : boolean = false;
+	
 	constructor(
 		public navCtrl: NavController,
 		public navParams: NavParams,
@@ -29,26 +30,44 @@ export class HomePage {
 		private storage: Storage,
 		private weather: WeatherServiceProvider,
 		private geolocation: Geolocation,
-		public alertCtrl: AlertController
+		public alertCtrl: AlertController,
+		public loading: LoadingController
 	) {
 		this.current_weather = WeatherModel;
 	}
 
 	getUserLocation() {
+
+		let loader = this.loading.create({
+			content: 'Getting weather update...',
+		  });
+
+		  loader.present();
+
 		this.geolocation
 			.getCurrentPosition()
 			.then(resp => {
-				// resp.coords.latitude
-				// resp.coords.longitude
+
+				
+
 				this.latitude = resp.coords.latitude;
 				this.longitude = resp.coords.longitude;
 
 				this.weather.getCurrentWeatherStats(this.latitude, this.longitude).then(data => {
-					this.current_weather = data;
+					
+
+					if(data == null){
+						this.showAlert("Ops. Please check if you connection settings, and TRY AGAIN.")
+					}else{
+						this.current_weather = data;
+					}
+					loader.dismiss();
+					this.header = true;
 				});
 			})
 			.catch(error => {
 				console.log('Error getting location', error);
+				this.header = false;
 				this.showAlert(error);
 			});
 	}
@@ -69,20 +88,10 @@ export class HomePage {
 	}
 
 	ionViewDidLoad() {
-		console.log('ionViewDidLoad HomePage');
-
+		
 		this.platform.ready().then(() => {
-			// Check for intro slide was shown
-
-			this.storage.get('introShown').then(val => {
-				console.log(val);
-				if (!val) {
-					this.storage.set('introShown', true);
-					this.navCtrl.setRoot('IntroPage');
-				}
-			});
-
 			this.getUserLocation();
 		});
 	}
 }
+	

@@ -8,11 +8,26 @@
 
 
 <ion-content padding>
-<h1>Header</h1>
-<p>{{current_weather.city}}</p>
-<p>{{current_weather.conditionDescription}}</p>
-<p>{{current_weather.min}}</p>
-<p>{{current_weather.max}}</p>
-<p>{{current_weather.temp}}</p>
-<img src="{{current_weather.weatherImage}}" alt="">
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-12><h1 *ngIf="header">Today</h1></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-2><p>{{current_weather.city}}</p></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6><p>{{current_weather.conditionDescription}}</p></ion-col>
+    <ion-col col-6><img src="{{current_weather.weatherImage}}" alt=""></ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-6><p>{{current_weather.temp}}</p></ion-col>
+    <ion-col col-6>
+        <ion-row>
+            <ion-col col-12><p>{{current_weather.min}}</p></ion-col>
+            <ion-col col-12><p>{{current_weather.max}}</p></ion-col>
+        </ion-row>  
+    </ion-col>
+  </ion-row>
+</ion-grid>
 </ion-content>

@@ -10,6 +10,8 @@ import { AppConfig }    from '../config/app.config';
 import { WeatherServiceProvider } from '../providers/weather-service/weather-service';
 import { HttpModule} from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
+import { NetworkServiceProvider } from '../providers/network-service/network-service';
+import { Network } from '@ionic-native/network';
 @NgModule({
   declarations: [
     MyApp,
@@ -32,8 +34,10 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     Keyboard,
     Geolocation,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    WeatherServiceProvider
+    WeatherServiceProvider,
+    NetworkServiceProvider
   ]
 })
 export class AppModule {}
