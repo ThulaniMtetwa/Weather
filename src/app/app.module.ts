@@ -7,7 +7,9 @@ import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { Keyboard } from '@ionic-native/keyboard';
 import { AppConfig }    from '../config/app.config';
-
+import { WeatherServiceProvider } from '../providers/weather-service/weather-service';
+import { HttpModule} from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
@@ -15,6 +17,7 @@ import { AppConfig }    from '../config/app.config';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -28,7 +31,9 @@ import { AppConfig }    from '../config/app.config';
     StatusBar,
     SplashScreen,
     Keyboard,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    Geolocation,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    WeatherServiceProvider
   ]
 })
 export class AppModule {}

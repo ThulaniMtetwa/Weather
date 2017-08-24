@@ -4,21 +4,15 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      <img src="assets/img/weather-ios.svg" alt="">
-    </ion-title>
 
-    <ion-buttons end>
-      <button ion-button icon-only >
-        <ion-icon name="settings"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
 
 
 <ion-content padding>
-
+<h1>Header</h1>
+<p>{{current_weather.city}}</p>
+<p>{{current_weather.conditionDescription}}</p>
+<p>{{current_weather.min}}</p>
+<p>{{current_weather.max}}</p>
+<p>{{current_weather.temp}}</p>
+<img src="{{current_weather.weatherImage}}" alt="">
 </ion-content>

@@ -3,10 +3,10 @@ declare var process: any;
 @Injectable()
 export class AppConfig {  
   public apiBaseUrl: string;
-  public googleMapApiKey: string;
+  public openWeatherMapApiKey: string;
 constructor() {
-    this.apiBaseUrl = this._readString('API_URL', 'http://localhost:3000/api/v1');
-    this.googleMapApiKey = this._readString('GOOGLE_MAP_API_KEY', 'xxxyyy111');
+    this.apiBaseUrl = this._readString('API_URL', 'http://api.openweathermap.org/data/2.5');
+    this.openWeatherMapApiKey = this._readString('OPEN_WEATHER_MAP', '747fab67e372280346a277e69b0f95fe');
 console.debug('AppConfig', this);
   }
 private _readString(key: string, defaultValue?: string): string {
